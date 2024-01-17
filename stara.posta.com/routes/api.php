@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Api\AuthController;
 use App\Http\Controllers\Api\CategoryController;
+use App\Http\Controllers\Api\ParcelController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -28,3 +29,6 @@ Route::post("/categories/edit/{id}", [CategoryController::class, "edit"]);
 
 Route::post('/login',[AuthController::class, 'login']);
 Route::post('/register',[AuthController::class, 'register']);
+
+Route::get('/parcels',[ParcelController::class, 'getList']);
+Route::post('/parcels',[ParcelController::class, 'create']);

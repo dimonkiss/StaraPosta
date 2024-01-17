@@ -232,6 +232,62 @@
                     }
                 }
             }
+        },
+        "/api/parcels": {
+            "get": {
+                "tags": [
+                    "Parcel"
+                ],
+                "operationId": "e6169e775a421d9e9b7db9e495aaa011",
+                "responses": {
+                    "200": {
+                        "description": "List Parcels."
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Parcel"
+                ],
+                "operationId": "b2d0d3d53c7b9a00d9a121b66c7ff1e1",
+                "requestBody": {
+                    "content": {
+                        "multipart/form-data": {
+                            "schema": {
+                                "required": [
+                                    "number",
+                                    "category_id",
+                                    "sender_id",
+                                    "receiver_id"
+                                ],
+                                "properties": {
+                                    "number": {
+                                        "type": "string"
+                                    },
+                                    "category_id": {
+                                        "type": "number"
+                                    },
+                                    "description": {
+                                        "type": "string"
+                                    },
+                                    "sender_id": {
+                                        "type": "number"
+                                    },
+                                    "receiver_id": {
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Add Category."
+                    }
+                }
+            }
         }
     }
 }

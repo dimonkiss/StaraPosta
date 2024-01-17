@@ -10,6 +10,10 @@ class Parcels extends Model
     use HasFactory;
 
     protected $fillable = [
-        "name"
+        "number",
+        "category_id",
+        "description",
+        "sender_id",
+        "receiver_id"
     ];
 }
