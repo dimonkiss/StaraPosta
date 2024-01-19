@@ -288,6 +288,37 @@
                     }
                 }
             }
+        },
+        "/api/parcels/{id}": {
+            "delete": {
+                "tags": [
+                    "Parcel"
+                ],
+                "operationId": "0d5a7007621654f840bcec60776fe180",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Ідентифікатор посилки",
+                        "required": true,
+                        "schema": {
+                            "type": "number",
+                            "format": "int64"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Успішне видалення посилки"
+                    },
+                    "404": {
+                        "description": "Посилки не знайдено"
+                    },
+                    "401": {
+                        "description": "Не авторизований"
+                    }
+                }
+            }
         }
     }
 }

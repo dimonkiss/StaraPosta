@@ -32,3 +32,4 @@ Route::post('/register',[AuthController::class, 'register']);
 
 Route::get('/parcels',[ParcelController::class, 'getList']);
 Route::post('/parcels',[ParcelController::class, 'create']);
+Route::delete('/parcels/{id}',[ParcelController::class,'delete']);

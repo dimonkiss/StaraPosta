@@ -65,4 +65,42 @@ class ParcelController extends Controller
             ['Content-Type' => 'application/json;charset=UTF-8', 'Charset' => 'utf-8'], JSON_UNESCAPED_UNICODE);
     }
 
+    /**
+     * @OA\Delete(
+     *     path="/api/parcels/{id}",
+     *     tags={"Parcel"},
+     *     @OA\Parameter(
+     *         name="id",
+     *         in="path",
+     *         description="Ідентифікатор посилки",
+     *         required=true,
+     *         @OA\Schema(
+     *             type="number",
+     *             format="int64"
+     *         )
+     *     ),
+     *     @OA\Response(
+     *         response=200,
+     *         description="Успішне видалення посилки"
+     *     ),
+     *     @OA\Response(
+     *         response=404,
+     *         description="Посилки не знайдено"
+     *     ),
+     *     @OA\Response(
+     *         response=401,
+     *         description="Не авторизований"
+     *     )
+     * )
+     */
+    public function delete($id) {
+        //Отримуємо запис по id
+        $parcel = Parcels::findOrFail($id);
+
+        //Після видалення усіх файлів видаляємо саму категорію
+        $parcel->delete();
+        //Вертаємо пустий результат
+        return response()->json("",200, ['Charset' => 'utf-8']);
+    }
+
 }
