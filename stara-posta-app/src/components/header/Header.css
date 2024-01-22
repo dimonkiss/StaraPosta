@@ -1,0 +1,25 @@
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    padding-inline: 20px;
+    background-color: #333;
+    color: #fff;
+    width: 48vw;
+    margin-inline: 25vw;
+}
+
+.icon {
+    cursor: pointer;
+    font-size: 20px;
+}
+
+.bell {
+    margin-right: auto;
+}
+
+.user {
+    margin-left: auto;
+}
+
