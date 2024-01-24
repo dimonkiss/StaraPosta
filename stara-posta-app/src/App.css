@@ -1,6 +1,5 @@
-.App
+.body
 {
-    height: 100dvh;
-    width: 50dvw;
-    margin-inline: auto;
+    height: 100%;
 }
+

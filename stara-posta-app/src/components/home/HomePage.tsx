@@ -1,8 +1,7 @@
 import './home.css'
 const HomePage =()=> {
     return(
-        <>
-            <div className="App">
+            <div className="HomePage">
                 {/* Верхня половина сторінки */}
                 <div className="upper-half">
 
@@ -15,13 +14,12 @@ const HomePage =()=> {
 
                 {/* Нижня половина сторінки */}
                 <div className="lower-half">
-                    <div className="box">Мої посилки</div>
-                    <div className="box">Container 4</div>
-                    <div className="box">Відділення та поштомати</div>
-                    <div className="box">Створити посилку</div>
+                    <div className="lbox">Мої посилки</div>
+                    <div className="lbox">Container 4</div>
+                    <div className="lbox">Відділення та поштомати</div>
+                    <div className="lbox">Створити посилку</div>
                 </div>
             </div>
-        </>
     );
 };
 export default HomePage;

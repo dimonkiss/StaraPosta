@@ -5,6 +5,7 @@ import HomePage from "./components/home/HomePage.tsx";
 import Header from "./components/header/Header.tsx";
 import LoginPage from "./components/login/LoginPage.tsx";
 import RegisterPage from "./components/register/RegisterPage.tsx";
+import PersonalAccountPage from "./components/personal cabinet/PersonalAccountPage.tsx";
 
 const App: React.FC = () => {
     return (
@@ -16,6 +17,7 @@ const App: React.FC = () => {
                 <Route path={"login"} element={<LoginPage/>} />
                 <Route path={"register"} element={<RegisterPage/>} />
                 <Route path={"home"} element={<HomePage/>} />
+                <Route path={"account"} element={<PersonalAccountPage/>}/>
             </Route>
         </Routes>
     </>
