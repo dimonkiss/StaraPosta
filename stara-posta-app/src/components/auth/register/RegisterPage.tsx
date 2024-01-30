@@ -1,11 +1,26 @@
 import { Form, Input, Button } from 'antd';
 import './RegistrationForm.css';
+import {IRegister, IRegisterForm} from "../types.ts";
+import * as axios from "axios";
+import {useNavigate} from "react-router-dom";
 
 const RegisterPage = () => {
-    const onFinish = (values) => {
-        console.log('Received values:', values);
-        // Тут ви можете додати логіку обробки введених даних, наприклад, надіслати їх на сервер для реєстрації нового користувача
-    };
+    const navigate=useNavigate()
+    const onFinish = async (values: IRegisterForm) => {
+        const model : IRegister = {
+            ...values,
+        };
+        console.log("Register model", model);
+        try {
+            const user = await axios.post("http://stara.posta.com/api/register", model);
+            console.log("User new", user);
+            navigate("/");
+
+        }
+        catch (ex) {
+            console.error('Помилка при реєстрації!');
+        }
+    }
 
     const onFinishFailed = (errorInfo) => {
         console.log('Failed:', errorInfo);

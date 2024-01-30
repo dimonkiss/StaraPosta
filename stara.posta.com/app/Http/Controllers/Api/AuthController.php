@@ -81,11 +81,7 @@ class AuthController extends Controller
      *         @OA\MediaType(
      *             mediaType="application/json",
      *             @OA\Schema(
-     *                 required={"email", "lastName", "name", "phone", "image", "password", "password_confirmation"},
-     *                 @OA\Property(
-     *                     property="image",
-     *                     type="string"
-     *                 ),
+     *                 required={"email", "lastName", "name", "phone", "password", "password_confirmation"},
      *                 @OA\Property(
      *                     property="email",
      *                     type="string"
@@ -113,7 +109,7 @@ class AuthController extends Controller
      *             )
      *         )
      *     ),
-     *     @OA\Response(response="200", description="Add Category.")
+     *     @OA\Response(response="200", description="Add User.")
      * )
      */
     public function register(Request $request) {
@@ -121,7 +117,6 @@ class AuthController extends Controller
         $validation = Validator::make($request->all(),[
             'name'=> 'required|string',
             'lastName'=> 'required|string',
-            'image'=> 'required|string',
             'phone'=> 'required|string',
             'email'=> 'required|email',
             'password'=> 'required|string|min:6',
@@ -132,20 +127,20 @@ class AuthController extends Controller
         }
 
         $input = $request->all();
-        $imageName = uniqid().".webp";
-        $sizes = [50,150,300,600,1200];
+        //$imageName = uniqid().".webp";
+        //$sizes = [50,150,300,600,1200];
         // create image manager with desired driver
         $manager = new ImageManager(new Driver());
-        foreach ($sizes as $size) {
-            $fileSave = $size."_".$imageName;
-            $imageRead = $manager->read($input["image"]);
-            $imageRead->scale(width: $size);
-            $path=public_path('upload/'.$fileSave);
-            $imageRead->toWebp()->save($path);
-        }
+       // foreach ($sizes as $size) {
+       //     $fileSave = $size."_".$imageName;
+       //     $imageRead = $manager->read($input["image"]);
+       //     $imageRead->scale(width: $size);
+       //     $path=public_path('upload/'.$fileSave);
+       //     $imageRead->toWebp()->save($path);st
+        //}
         $user = User::create(array_merge(
             $validation->validated(),
-            ['password' => bcrypt($request->password), 'image'=> $imageName]
+            ['password' => bcrypt($request->password)]
         ));
         return response()->json(['token'=>$user], Response::HTTP_OK);
     }

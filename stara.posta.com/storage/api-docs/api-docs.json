@@ -73,14 +73,10 @@
                                     "lastName",
                                     "name",
                                     "phone",
-                                    "image",
                                     "password",
                                     "password_confirmation"
                                 ],
                                 "properties": {
-                                    "image": {
-                                        "type": "string"
-                                    },
                                     "email": {
                                         "type": "string"
                                     },
@@ -107,7 +103,7 @@
                 },
                 "responses": {
                     "200": {
-                        "description": "Add Category."
+                        "description": "Add User."
                     }
                 }
             }
