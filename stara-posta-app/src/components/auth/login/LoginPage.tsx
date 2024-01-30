@@ -1,4 +1,4 @@
-import {Alert, Button, Divider, Form, Input} from "antd";
+import {Alert, Button, Form, Input} from "antd";
 import {ILogin, ILoginResult, IUser} from "../types.ts";
 import "./Login.css";
 import {useNavigate} from "react-router-dom";
@@ -15,21 +15,23 @@ const LoginPage = () => {
     const [errorMessage] = useState<string>("");
     //Відправка форми на сервер
     const onFinish = async (values: ILogin) => {
-
+        //console.log(values);
         try {
             const resp = await axios.post<ILoginResult>("http://127.0.0.1:8000/api/login", values);
+            //console.log(resp);
             const {token} = resp.data;
-            localStorage.token = token;
-            //console.log("User login data", token);
+            //localStorage.token = token;
+            console.log("User login data", token);
             const user = jwtDecode(token) as IUser;
             dispatch({
                 type: AuthReducerActionType.LOGIN_USER,
                 payload: {
-                    email: user.email
+                    email: user.email,
+                    image: user.image
                 } as IUser
             });
             //console.log("User auth", user);
-            navigate("/");
+            navigate("/home");
 
         }
         catch (ex) {

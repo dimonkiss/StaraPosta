@@ -1,12 +1,12 @@
 
-
 export interface IRegisterForm {
     lastName: string,
     name: string,
     phone: string,
     email: string,
     password: string,
-    password_confirmation: string
+    password_confirmation: string,
+    image: string | null
 }
 
 export interface IRegister {
@@ -15,7 +15,8 @@ export interface IRegister {
     phone: string,
     email: string,
     password: string,
-    password_confirmation: string
+    password_confirmation: string,
+    image: string | null
 }
 
 export interface ILogin {
@@ -28,5 +29,6 @@ export interface ILoginResult {
 }
 
 export interface IUser {
-    email: string
+    email: string,
+    image: string
 }

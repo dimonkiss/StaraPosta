@@ -1,6 +1,6 @@
-import React, {useEffect} from 'react';
+import React from 'react';
 import './App.css';
-import {Route, Routes, useNavigate} from "react-router-dom";
+import {Route, Routes} from "react-router-dom";
 import HomePage from "./components/home/HomePage.tsx";
 import Header from "./components/header/Header.tsx";
 import LoginPage from "./components/auth/login/LoginPage.tsx";
