@@ -14,10 +14,10 @@ const HomePage =()=> {
 
                 {/* Нижня половина сторінки */}
                 <div className="lower-half">
-                    <div className="lbox">Мої посилки</div>
-                    <div className="lbox">Container 4</div>
-                    <div className="lbox">Відділення та поштомати</div>
-                    <div className="lbox">Створити посилку</div>
+                    <div className="lbox1"></div>
+                    <div className="lbox2">Container 4</div>
+                    <div className="lbox3"></div>
+                    <div className="lbox4"></div>
                 </div>
             </div>
     );

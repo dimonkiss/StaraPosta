@@ -79,9 +79,13 @@ const LoginPage = () => {
                         <Input.Password id={"password"}/>
                     </Form.Item>
 
-                    <Form.Item wrapperCol={{offset: 8, span: 16}}>
-                        <Button type="primary" htmlType="submit">
+                    <Form.Item wrapperCol={{offset: 4, span: 16}}>
+                        <Button type="primary" htmlType="submit" style={{ marginRight: '10px' }}>
                             Вхід
+                        </Button>
+                        <span style={{ margin: '0 10px' }}>Or</span>
+                        <Button type="primary" onClick={() => navigate("/register")}>
+                            Реєстрація
                         </Button>
                     </Form.Item>
 

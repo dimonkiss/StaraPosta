@@ -22,7 +22,7 @@ const App: React.FC = () => {
                 <Route path={"account"} element={<PersonalAccountPage/>}/>
             </Route>
         </Routes>
-    </>
+        </>
     );
 };
 

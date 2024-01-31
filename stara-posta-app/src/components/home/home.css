@@ -34,13 +34,55 @@
     border: 1px solid #cccccc;
     text-align: center;
 }
-.lbox {
+.lbox1 {
+    background-image: url('icons/parcel.png');
+    background-size: contain; /* Ensure the background image is contained within the element */
+    background-repeat: no-repeat; /* Prevent the background image from repeating */
+    background-position: right; /* Center the background image */
     width: 40%;
-    height: 49%;
+    height: 35%;
     margin: auto;
     box-sizing: border-box;
-    padding: 20px;
-    background-color: #ffffff;
-    border: 1px solid #cccccc;
+    padding: 0; /* Відмінити внутрішні відступи */
+    border: none; /* Відмінити рамку */
+    text-align: center;
+}
+.lbox2 {
+    background-image: url('icons');
+    background-size: contain; /* Ensure the background image is contained within the element */
+    background-repeat: no-repeat; /* Prevent the background image from repeating */
+    background-position: left; /* Center the background image */
+    width: 40%;
+    height: 35%;
+    margin: auto;
+    box-sizing: border-box;
+    padding: 0; /* Відмінити внутрішні відступи */
+    border: none; /* Відмінити рамку */
+    text-align: center;
+}
+.lbox3 {
+    background-image: url('icons/distribution-center.png');
+    background-size: contain; /* Ensure the background image is contained within the element */
+    background-repeat: no-repeat; /* Prevent the background image from repeating */
+    background-position: right; /* Center the background image */
+    width: 40%;
+    height: 35%;
+    margin: auto;
+    box-sizing: border-box;
+    padding: 0; /* Відмінити внутрішні відступи */
+    border: none; /* Відмінити рамку */
+    text-align: center;
+}
+.lbox4 {
+    background-image: url('icons/add.png');
+    background-size: contain; /* Ensure the background image is contained within the element */
+    background-repeat: no-repeat; /* Prevent the background image from repeating */
+    background-position: left; /* Center the background image */
+    width: 40%;
+    height: 35%;
+    margin: auto;
+    box-sizing: border-box;
+    padding: 0; /* Відмінити внутрішні відступи */
+    border: none; /* Відмінити рамку */
     text-align: center;
 }
