@@ -1,21 +1,40 @@
-import React, { useState } from 'react';
+import {useEffect, useState} from 'react';
 import { Button, Divider, Modal } from 'antd';
-import './PersonalAccount.css'; // Create your stylesheet if needed
+import axios from 'axios';
+import './PersonalAccount.css';
+
 
 const PersonalAccountPage = () => {
-    // Example data, replace this with actual user data from your application state or API
-    const [userData, setUserData] = useState({
-        fullName: 'John Doe',
-        email: 'john.doe@example.com',
-    });
+
+    const [name, setName] = useState(null);
+    const [lastName, setLastName] = useState(null);
+    const [email, setEmail] = useState(null);
+    const [password, setPassword] = useState(null);
+    const getUser = async () => {
+        const userId = localStorage.senderUser;
+
+        try {
+            const response = await axios.get(`http://127.0.0.1:8000/api/user/${userId}`);
+            const userData = response.data.user;
+            console.log(userData);
+            setName(userData.name);
+            setLastName(userData.lastName);
+            setPassword(userData.password);
+            setEmail(userData.email);
+        } catch (error) {
+            console.error('Error fetching user data:', error);
+        }
+    };
+    useEffect(() => {
+        getUser();
+    }, []);
+
 
     const handleChangePassword = () => {
-        // Add logic to handle password change
         Modal.info({
             title: 'Change Password',
             content: (
                 <div>
-                    {/* Add the form or input fields for changing the password */}
                     <p>Form or input fields for changing the password go here.</p>
                 </div>
             ),
@@ -24,12 +43,10 @@ const PersonalAccountPage = () => {
     };
 
     const handleDeleteProfile = () => {
-        // Add logic to handle profile deletion
         Modal.confirm({
             title: 'Delete Profile',
             content: 'Are you sure you want to delete your profile?',
             onOk() {
-                // Add logic to delete the profile
                 console.log('Profile deleted');
             },
             onCancel() {},
@@ -39,20 +56,24 @@ const PersonalAccountPage = () => {
     return (
         <div className="personal-account-container">
             <div className="user-info">
-                <p><strong>Full Name:</strong> {userData.fullName}</p>
-                <p><strong>Email:</strong> {userData.email}</p>
+                {name && (
+                    <>
+                        <p><strong>Full Name:</strong> {name +" "+ lastName}</p>
+                        <p><strong>Email:</strong> {email}</p>
+                    </>
+                )}
             </div>
 
-            <Divider />
+            <Divider/>
 
             <div className="actions">
                 <Button type="primary" onClick={handleChangePassword}>
                     Change Password
                 </Button>
 
-                <Divider />
+                <Divider/>
 
-                <Button type="danger" onClick={handleDeleteProfile}>
+                <Button type="primary" onClick={handleDeleteProfile}>
                     Delete Profile
                 </Button>
             </div>

@@ -70,7 +70,11 @@ class AuthController extends Controller
         if(!$token = auth()->attempt($validation->validated())) {
             return response()->json(['error'=>'Дані вказано не вірно'], Response::HTTP_UNAUTHORIZED);
         }
-        return response()->json(['token'=>$token], Response::HTTP_OK);
+        $email = $request->email;
+        $user = User::where('email', $email)->first();
+        $userId = $user->id;
+
+        return response()->json(['token'=>$token,'senderUser'=>$userId], Response::HTTP_OK);
     }
 
     /**
@@ -144,4 +148,55 @@ class AuthController extends Controller
         ));
         return response()->json(['token'=>$user], Response::HTTP_OK);
     }
+
+
+    /**
+     * @OA\Get(
+     *     tags={"Auth"},
+     *     path="/api/user/{id}",
+     *     summary="Get user by ID",
+     *     description="Returns a single user by ID",
+     *     operationId="getUserById",
+     *     @OA\Parameter(
+     *         name="id",
+     *         in="path",
+     *         description="ID of the user to fetch",
+     *         required=true,
+     *         @OA\Schema(
+     *             type="integer",
+     *             format="int64"
+     *         )
+     *     ),
+     *     @OA\Response(
+     *         response=200,
+     *         description="Successful operation",
+     *         @OA\JsonContent(
+     *
+     *         )
+     *     ),
+     *     @OA\Response(
+     *         response=404,
+     *         description="User not found",
+     *         @OA\JsonContent(
+     *             @OA\Property(property="error", type="string", example="User not found")
+     *         )
+     *     )
+     * )
+     */
+
+    public function getUserById($id)
+    {
+        try {
+            $user = User::where('id', $id)->first();
+            if ($user) {
+                return response()->json(['user' => $user], Response::HTTP_OK);
+            } else {
+                return response()->json(['error' => 'User not found'], Response::HTTP_NOT_FOUND);
+            }
+        } catch (ModelNotFoundException $exception) {
+            return response()->json(['error' => 'User not found'], Response::HTTP_NOT_FOUND);
+        }
+    }
+
+
 }

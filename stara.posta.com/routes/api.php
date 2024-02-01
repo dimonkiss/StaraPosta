@@ -29,6 +29,8 @@ Route::post("/categories/edit/{id}", [CategoryController::class, "edit"]);
 
 Route::post('/login',[AuthController::class, 'login']);
 Route::post('/register',[AuthController::class, 'register']);
+Route::get('/user/{id}', [AuthController::class, 'getUserById']);
+
 
 Route::get('/parcels',[ParcelController::class, 'getList']);
 Route::post('/parcels',[ParcelController::class, 'create']);

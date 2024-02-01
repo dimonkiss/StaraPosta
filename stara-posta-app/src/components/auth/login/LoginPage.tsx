@@ -1,35 +1,31 @@
 import {Alert, Button, Form, Input} from "antd";
-import {ILogin, ILoginResult, IUser} from "../types.ts";
+import {ILogin} from "../types.ts";
 import "./Login.css";
 import {useNavigate} from "react-router-dom";
 import {useState} from "react";
 import axios from "axios";
-import {jwtDecode} from "jwt-decode";
-import {useDispatch} from "react-redux";
-import {AuthReducerActionType} from "./AuthReducer.ts";
+
 
 const LoginPage = () => {
-    //Хук, який викликає ACTION в глобальному REDUX - він попадає в усіх РЕДЮСЕРАХ
-    const dispatch = useDispatch();
+    //const dispatch = useDispatch();
     const navigate = useNavigate();
     const [errorMessage] = useState<string>("");
-    //Відправка форми на сервер
     const onFinish = async (values: ILogin) => {
         //console.log(values);
         try {
-            const resp = await axios.post<ILoginResult>("http://127.0.0.1:8000/api/login", values);
+            const resp = await axios.post("http://127.0.0.1:8000/api/login", values);
             //console.log(resp);
-            const {token} = resp.data;
-            //localStorage.token = token;
-            console.log("User login data", token);
-            const user = jwtDecode(token) as IUser;
-            dispatch({
-                type: AuthReducerActionType.LOGIN_USER,
-                payload: {
-                    email: user.email,
-                    image: user.image
-                } as IUser
-            });
+            localStorage.token = resp.data.token;
+            localStorage.senderUser = resp.data.senderUser;
+            console.log("User login data", localStorage.token);
+            // const user = jwtDecode(token) as IUser;
+            // dispatch({
+            //     type: AuthReducerActionType.LOGIN_USER,
+            //     payload: {
+            //         email: user.email,
+            //         image: user.image
+            //     } as IUser
+            // });
             //console.log("User auth", user);
             navigate("/home");
 
