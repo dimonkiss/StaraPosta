@@ -1,9 +1,19 @@
 import './Header.css';
 import {FaHome, FaUser} from 'react-icons/fa'; // Import the home icon from FontAwesome
 import { useNavigate } from 'react-router-dom';
-
+import {useEffect, useState} from "react";
 const Header = () => {
     const navigate = useNavigate();
+    const [count,setCount] = useState(0);
+    useEffect(() => {
+        const isAuthenticated = localStorage.getItem('token');
+
+        if (!isAuthenticated && count==0) {
+            setCount(1);
+            navigate("/enter");
+        }
+    }, [navigate]);
+
 
     const checkTokenAndRedirect = () => {
         const token = localStorage.getItem('token');

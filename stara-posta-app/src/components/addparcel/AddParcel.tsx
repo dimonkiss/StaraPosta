@@ -1,7 +1,7 @@
 import{ useState } from 'react';
 import { Form, Input, Button } from 'antd';
 import Parcel from "./parcel.ts";
-
+import "./pageparcel.css";
 const AddParcel = () => {
     const [form] = Form.useForm();
     const [loading, setLoading] = useState(false);
@@ -29,6 +29,7 @@ const AddParcel = () => {
     };
 
     return (
+        <div className={"parcel-container"}>
         <Form form={form} onFinish={onFinish} layout="vertical">
             <Form.Item
                 label="Number"
@@ -70,6 +71,7 @@ const AddParcel = () => {
                 </Button>
             </Form.Item>
         </Form>
+        </div>
     );
 };
 

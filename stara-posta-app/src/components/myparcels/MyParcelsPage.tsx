@@ -1,4 +1,4 @@
-
+import "./MyParcels.css";
 import React, { useEffect, useState } from 'react';
 import Parcel from "../addparcel/parcel.ts";
 const MyParcelsPage: React.FC = () => {
@@ -20,7 +20,7 @@ const MyParcelsPage: React.FC = () => {
     }, []);
 
     return (
-        <div>
+        <div className={"myparcels-container"}>
             <h1>My Parcels</h1>
             <ul>
                 {parcels.map(parcel => (

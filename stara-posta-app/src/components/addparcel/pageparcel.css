@@ -1,0 +1,9 @@
+.parcel-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    left: 50%;
+    height: 97vh;
+    background-color: #ffffff;
+}

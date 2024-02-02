@@ -9,7 +9,7 @@ const PersonalAccountPage = () => {
     const [name, setName] = useState(null);
     const [lastName, setLastName] = useState(null);
     const [email, setEmail] = useState(null);
-    const [password, setPassword] = useState(null);
+    //const [password, setPassword] = useState(null);
     const getUser = async () => {
         const userId = localStorage.senderUser;
 
@@ -19,7 +19,7 @@ const PersonalAccountPage = () => {
             console.log(userData);
             setName(userData.name);
             setLastName(userData.lastName);
-            setPassword(userData.password);
+            //setPassword(userData.password);
             setEmail(userData.email);
         } catch (error) {
             console.error('Error fetching user data:', error);

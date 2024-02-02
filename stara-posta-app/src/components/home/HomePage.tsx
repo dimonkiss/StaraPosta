@@ -1,5 +1,16 @@
 import './home.css'
+import {useEffect} from "react";
+import {useNavigate} from "react-router-dom";
 const HomePage =()=> {
+    const navigate = useNavigate();
+    useEffect(() => {
+        const isAuthenticated = localStorage.getItem('token');
+
+        if (!isAuthenticated) {
+            navigate("/enter");
+        }
+    },[navigate]);
+
     return(
             <div className="HomePage">
                 {/* Верхня половина сторінки */}
@@ -14,10 +25,10 @@ const HomePage =()=> {
 
                 {/* Нижня половина сторінки */}
                 <div className="lower-half">
-                    <div className="lbox1"></div>
+                    <div className="lbox1" onClick={()=>navigate("/myparcels")}></div>
                     <div className="lbox2">Container 4</div>
-                    <div className="lbox3"></div>
-                    <div className="lbox4"></div>
+                    <div className="lbox3" onClick={()=>navigate("")}></div>
+                    <div className="lbox4" onClick={()=>navigate("/addparcel")}></div>
                 </div>
             </div>
     );
